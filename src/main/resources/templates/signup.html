@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillHub | Sign-Up </title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #1A237E;
+        }
+        .card0 {
+            box-shadow: 0px 4px 8px 0px #757575;
+            border-radius: 0px;
+        }
+        .card2 {
+            margin: 0px 40px;
+        }
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            margin-left: 35px;
+        }
+        .image {
+            width: 550px;
+            height: 500px;
+        }
+        .border-line {
+            border-right: 1px solid #EEEEEE;
+        }
+        .line {
+            height: 1px;
+            width: 40%;
+            background-color: #E0E0E0;
+            margin-top: 10px;
+        }
+        .or {
+            width: 20%;
+        }
+        .text-sm {
+            font-size: 14px !important;
+        }
+        ::placeholder {
+            color: #BDBDBD;
+            opacity: 1;
+            font-weight: 300;
+        }
+        :-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300;
+        }
+        ::-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <!-- Left Side -->
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <div class="row">
+                        <!-- Your logo or image -->
+                        <img src="/images/SH.png" class="logo">
+                    </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                        <!-- Another image or content -->
+                        <img src="/images/two.png" class="image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="col-lg-6">
+                <div class="card2 card border-0 px-4 py-5">
+                    <div class="row mb-4 px-3">
+                        <h6 class="mb-0 mr-4 mt-2 text-center">Welcome to the SkillHub!</h6>
+                    </div>
+                    <div class="row px-3 mb-4">
+                        <div class="line"></div>
+                        <small class="or text-center">Sign-Up</small>
+                        <div class="line"></div>
+                    </div>
+
+                    <!-- Signup Form -->
+                    <form action="/signup" method="post" th:object="${person}">
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label text-sm">Name</label>
+                            <input type="text" class="form-control mb-4" id="name" th:field="*{name}" placeholder="Enter Your Full Name">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-sm">Email Address</label>
+                            <input type="email" class="form-control mb-4" id="email" th:field="*{email}" placeholder="Enter a valid email address">
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label text-sm">Mobile Number</label>
+                            <input type="text" class="form-control mb-4" id="mobile" th:field="*{mobile}" placeholder="Enter Your Mobile Number">
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div class="mb-3">
+                            <label for="linkedin" class="form-label text-sm">LinkedIn ID</label>
+                            <input type="text" class="form-control mb-4" id="linkedin" th:field="*{linkedin}" placeholder="Enter Your LinkedIn profile">
+                        </div>
+
+                        <!-- Website -->
+                        <div class="mb-3">
+                            <label for="portfolio" class="form-label text-sm">Portfolio</label>
+                            <input type="text" class="form-control mb-4" id="portfolio" th:field="*{portfolio}" placeholder="Enter Your Portfolio link">
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label text-sm">Password</label>
+                            <input type="password" class="form-control mb-4" id="password" th:field="*{password}" placeholder="Enter Your Password">
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="mb-3">
+                            <label for="gender" class="form-label text-sm">Gender</label>
+                            <select class="form-select mb-4" id="gender" th:field="*{gender}">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Domain -->
+                        <div class="mb-3">
+                            <label for="domain" class="form-label text-sm">Domain</label>
+                            <select class="form-select mb-4" id="domain" th:field="*{domain.id}" onchange="updateSubdomains()">
+                                <option th:each="dom : ${domain}" th:value="${dom.id}" th:text="${dom.name}"></option>
+                            </select>
+                        </div>
+
+                        <!-- Subdomain -->
+                        <div class="mb-3">
+                            <label for="subdomain" class="form-label text-sm">Subdomain</label>
+                            <select class="form-select mb-4" id="subdomain" th:field="*{subdomain.id}">
+                                <option th:each="sub : ${subdom}" th:value="${sub.id}" th:text="${sub.name}"></option>
+                            </select>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary btn-blue btn-block">Sign-Up</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div style="align-self: center">
+            <div class="bg-blue py-4">
+                <div class="row px-3">
+                    <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2024. All rights reserved by SkillHub</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap 5 JS bundle (required for Bootstrap components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-3W/1II5yxB/J2A+kRM7/LW3kY3leBAdgHM+M71vC+5/0aLPl/2h+uKpHxbI4zZ3v" crossorigin="anonymous"></script>
+
+<!-- JavaScript for dynamic subdomain dropdown -->
+<script th:inline="javascript">
+    function updateSubdomains() {
+        var domainId = document.getElementById('domain').value;
+        var subdomainSelect = document.getElementById('subdomain');
+
+        // Clear existing options
+        subdomainSelect.innerHTML = '';
+
+        // Add default option
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select Subdomain';
+        subdomainSelect.appendChild(defaultOption);
+
+        // Add options based on selected domain
+       [[${subdom}]].forEach(function(sub) {
+            if (sub.domain.id == domainId) {
+                var option = document.createElement('option');
+                option.value = sub.id;
+                option.textContent = sub.name;
+                subdomainSelect.appendChild(option);
+            }
+        });
+    }
+</script>
+</body>
+</html>

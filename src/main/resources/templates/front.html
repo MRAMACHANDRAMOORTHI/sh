@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Cards</title>
+    <link rel="stylesheet" href="./css/profile.css">
+</head>
+<body>
+
+<div class="main">
+<div class="profile-container">
+    <!-- Loop through each person in the list -->
+    <div class="profile-card" th:each="person : ${person}">
+        <header>
+            <h2 th:text="${person.name}"></h2>
+        </header>
+        <div class="profile-bio">
+            <a href="#" type="email"><h4 th:text="${person.email}" ></h4></a>
+            <h4>Mobile</h4>
+            <p th:text="${person.mobile}"></p>
+            <p th:text="'Gender: ' + ${person.gender}" ></p>
+        </div>
+        <a th:href="${person.portfolio}" class="btnx">Portfolio</a>
+        <a th:href="${person.linkedin}" class="btnx">LinkedIn</a>
+    </div>
+</div>
+</div>
+</body>
+</html>

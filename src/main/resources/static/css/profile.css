@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    overflow-y: auto; /* Enable vertical scrolling */
+    background: #1A237E;
+    font: normal 14px/1.618em "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    padding: 50px;
+    margin-top: 4rem;
+}
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.profile-card {
+    background: orange;
+    margin: 20px; /* Initial margin */
+    padding-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 300px; /* Adjust card width as needed */
+}
+
+.btnx {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: #1A237E;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none; /* Remove default underline */
+}
+
+.btnx:hover {
+    background: white;
+    color: #1A237E;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+}
+
+.profile-card header {
+    padding: 20px;
+    background: orange;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.profile-card header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+}
+
+.profile-bio {
+    padding: 20px;
+    background: #FFFFFF;
+}
+
+.profile-bio h4 {
+    margin-top: 0; /* Remove default margin */
+}
+
+.profile-bio p {
+    margin-bottom: 10px; /* Add some space between paragraphs */
+}
+
+/* Media Query for Responsive Design */
+@media screen and (max-width: 768px) {
+    .profile-card {
+        width: calc(100% - 40px); /* Adjust card width to fit screen */
+        margin: 10px; /* Increase margin for spacing */
+    }
+}

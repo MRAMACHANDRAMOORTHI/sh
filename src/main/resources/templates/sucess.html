@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added viewport meta tag -->
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1A237E;
+            text-align: center;
+            padding-top: 10px;
+            margin: 0; /* Reset default margin */
+        }
+
+        .container {
+            max-width: 800px; /* Adjust max-width to your preference */
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: orange;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #1A237E;
+            font-weight: bold;
+        }
+
+        .company {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            margin-bottom: 30px;
+            background-color: #1A237E;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .company header {
+            padding: 15px;
+            background: orange;
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .company-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Distribute items evenly */
+            padding: 20px;
+            color: whitesmoke;
+        }
+
+        .address {
+            flex: 1 1 300px; /* Responsive width */
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .address p {
+            color: #1A237E;
+            padding: 5px;
+        }
+
+        .btnx {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: orange;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none; /* Remove underline from button link */
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btnx:hover {
+            background: white;
+            color: #1A237E;
+        }
+
+        @media screen and (max-width: 600px) {
+            .company {
+                width: 100%; /* Full width on smaller screens */
+            }
+
+            .company-details {
+                flex-direction: column; /* Stack details vertically on small screens */
+            }
+
+            .address {
+                margin: 10px 0; /* Adjust margin for spacing */
+            }
+
+            .address2 {
+                margin-top: 20px; /* Increase top margin */
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Our Platform</h1>
+
+    <!-- Loop through the person list if it's not empty -->
+    <div th:unless="${person == null || #lists.isEmpty(person)}">
+        <div th:each="p : ${person}">
+            <h3><span th:text="${p.name}"></span></h3>
+        </div>
+    </div>
+
+    <h2>Your Companies:</h2>
+
+    <div th:each="company : ${company}" class="company">
+        <header>
+            <h3 class="company-name" th:text="${company.name}"></h3>
+        </header>
+        <div class="company-details">
+            <div class="address">
+                <h3>Address:</h3>
+                <p><span th:text="${company.address}"></span></p>
+                <p><strong>City:</strong> <span th:text="${company.city}"></span></p>
+                <p><strong>State:</strong> <span th:text="${company.state}"></span></p>
+                <p><strong>Country:</strong> <span th:text="${company.country}"></span></p>
+                <p><strong>ZIP Code:</strong> <span th:text="${company.zipCode}"></span></p>
+                <p><strong>Phone Number:</strong></p>
+                <p><span th:text="${company.phoneNumber}"></span></p>
+            </div>
+            <div class="address">
+                <p><strong>Founded In :</strong> <span th:text="${company.founded}"></span></p>
+                <p><strong>Description:</strong> <span th:text="${company.description}"></span></p>
+                <a th:href="@{${company.website}}" class="btnx">Company Site</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
